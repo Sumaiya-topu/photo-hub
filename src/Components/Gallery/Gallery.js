@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Image from "../Image/Image";
 import initialImages from "../../assets/images";
@@ -8,7 +8,7 @@ function Gallery() {
 
   const [images, setImages] = useState(initialImages); // State for images
   const [selectedImages, setSelectedImages] = useState([]); // State for selected images
-  const [featureImage, setFeatureImage] = useState(null); // State for the featured image
+  const [featureImage, setFeatureImage] = useState(images[0]); // State for the featured image
 
   // Event handler to toggle selection of an image
   const handleImageClick = (imageId) => {
@@ -38,6 +38,13 @@ function Gallery() {
     setFeatureImage(imageId);
   };
 
+  useEffect(() => {
+    // Automatically set the first image as the feature image when the images change
+    if (images.length > 0) {
+      setFeatureImage(images[0]);
+    }
+  }, [images]);
+
   return (
     <div className=" grid grid-cols-5  lg:grid-cols-12">
       {images.map((image, index) => (
@@ -45,7 +52,7 @@ function Gallery() {
           key={image.id}
           data={image}
           isSelected={selectedImages.includes(image.id)}
-          isFeatureImage={image.id === featureImage}
+          isFeatureImage={image.id === featureImage.id}
           onClick={handleImageClick}
           onDelete={handleImageDelete}
           onReorder={handleImageReorder}

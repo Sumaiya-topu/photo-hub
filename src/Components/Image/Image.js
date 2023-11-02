@@ -25,22 +25,24 @@ function Image({
   };
 
   const handleSetFeature = () => {
-    onSetFeatureImage(data.id);
+    onSetFeatureImage(data);
   };
 
   return (
     <div
-      className={`image ${isSelected ? "selected" : ""} ${
-        isFeatureImage ? "feature" : ""
-      } `}
+      className={` p-1 hover:translate-y-2 duration-300 flex items-center ${
+        isFeatureImage
+          ? "bg-blue-200 col-span-2 row-span-2 p-2" // Customize this class for the featured image
+          : "" // Customize this class for regular images
+      }`}
       onClick={handleClick}
       onDragStart={handleDragStart}
       onDragOver={(e) => e.preventDefault()}
       onDrop={handleDrop}
     >
-      <img className="w-[100px] md:w-full" src={data.url} alt={data.name} />
-      {/* <button onClick={onDelete}>Delete</button> */}
-      {/* <button onClick={handleSetFeature}>Set Feature</button> */}
+      <img src={data.url} alt={data.name} className="w-full" />
+      {/* <button onClick={onDelete}>Delete</button>
+      <button onClick={handleSetFeature}>Set Feature</button> */}
     </div>
   );
 }
