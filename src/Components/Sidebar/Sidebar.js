@@ -1,11 +1,9 @@
 import {
   Card,
-  Typography,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
+  Typography,
 } from "@material-tailwind/react";
 import {
   TrashIcon,
@@ -13,56 +11,52 @@ import {
   ClockIcon,
   PhotoIcon,
   HeartIcon,
-  PowerIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 export function DefaultSidebar() {
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-      <div className="mb-2 p-4">
-        <Typography variant="h5" color="blue-gray">
-          Photo-HUB
-        </Typography>
-      </div>
-      <List>
-        <Link to="/">
+    <div className="hidden xs:block border-r border-blue-gray-100">
+      <Card className="h-[calc(100vh)]  w-full max-w-[18rem] p-4 shadow-lg shadow-blue-gray-900/20 rounded-none">
+        <List>
+          <Link to="/">
+            <ListItem className="">
+              <ListItemPrefix>
+                <PhotoIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <h2 className=" ">Library</h2>
+            </ListItem>
+          </Link>
+          <Link to="/favourites">
+            <ListItem>
+              <ListItemPrefix>
+                <HeartIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <h2 className=" ">Favourites</h2>
+            </ListItem>
+          </Link>
+          <Link to="/memories">
+            <ListItem>
+              <ListItemPrefix>
+                <ClockIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <h2 className=" ">Memories</h2>
+            </ListItem>
+          </Link>
           <ListItem>
             <ListItemPrefix>
-              <PhotoIcon className="h-5 w-5" />
+              <Cog6ToothIcon className="h-5 w-5" />
             </ListItemPrefix>
-            Library
+            <h2 className=" ">Settings</h2>{" "}
           </ListItem>
-        </Link>
-        <Link to="/favourites">
           <ListItem>
             <ListItemPrefix>
-              <HeartIcon className="h-5 w-5" />
+              <TrashIcon className="h-5 w-5" />
             </ListItemPrefix>
-            Favourites
+            <h2 className=" ">Trash</h2>{" "}
           </ListItem>
-        </Link>
-        <Link to="/memories">
-          <ListItem>
-            <ListItemPrefix>
-              <ClockIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Memories
-          </ListItem>
-        </Link>
-        <ListItem>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Settings
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <TrashIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Recently Deleted
-        </ListItem>
-      </List>
-    </Card>
+        </List>
+      </Card>
+    </div>
   );
 }
