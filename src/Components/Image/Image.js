@@ -41,7 +41,7 @@ function Image({
       onDrop={handleDrop}
     >
       <img src={data.url} alt={data.name} className="w-full" />
-      {/* <button onClick={onDelete}>Delete</button> */}
+      <button onClick={onDelete}>Delete</button>
       {/* <button onClick={handleSetFeature}>Set Feature</button> */}
     </div>
   );
