@@ -22,7 +22,7 @@ export function DefaultSidebar() {
           <Link to="/">
             <ListItem className="">
               <ListItemPrefix>
-                <PhotoIcon className="h-5 w-5" />
+                <PhotoIcon className="h-5 w-5 text-blue-600" />
               </ListItemPrefix>
               <h2 className=" ">Library</h2>
             </ListItem>
@@ -30,7 +30,7 @@ export function DefaultSidebar() {
           <Link to="/favourites">
             <ListItem>
               <ListItemPrefix>
-                <HeartIcon className="h-5 w-5" />
+                <HeartIcon className="h-5 w-5 text-blue-600" />
               </ListItemPrefix>
               <h2 className=" ">Favourites</h2>
             </ListItem>
@@ -38,20 +38,20 @@ export function DefaultSidebar() {
           <Link to="/memories">
             <ListItem>
               <ListItemPrefix>
-                <ClockIcon className="h-5 w-5" />
+                <ClockIcon className="h-5 w-5 text-blue-600" />
               </ListItemPrefix>
               <h2 className=" ">Memories</h2>
             </ListItem>
           </Link>
           <ListItem>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <Cog6ToothIcon className="h-5 w-5 text-blue-600" />
             </ListItemPrefix>
             <h2 className=" ">Settings</h2>{" "}
           </ListItem>
           <ListItem>
             <ListItemPrefix>
-              <TrashIcon className="h-5 w-5" />
+              <TrashIcon className="h-5 w-5 text-blue-600" />
             </ListItemPrefix>
             <h2 className=" ">Trash</h2>{" "}
           </ListItem>

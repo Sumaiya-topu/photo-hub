@@ -17,6 +17,8 @@ import i16 from "../assets/images/18ca66361a6a6a0b03226d93917c679e.jpg";
 import i17 from "../assets/images/e1b7906f4539b93cdad0eae94fdf6201.jpg";
 import i18 from "../assets/images/fc0f96b1c7bf364ccb69c73908d857cc.jpg";
 import i19 from "../assets/images/642ba4f2dd24a34214f17584962eb983.jpg";
+import i20 from "../assets/images/47d019bb0d5418dcfddedd78cf278ed5.jpg";
+import i21 from "../assets/images/2f38253d2b6e787bc8ace3956a3a89cb.jpg";
 
 const initialImages = [
   {
@@ -113,6 +115,16 @@ const initialImages = [
     id: 19,
     url: i19,
     name: "Image 19",
+  },
+  {
+    id: 20,
+    url: i20,
+    name: "Image 20",
+  },
+  {
+    id: 21,
+    url: i21,
+    name: "Image 21",
   },
 ];
 
