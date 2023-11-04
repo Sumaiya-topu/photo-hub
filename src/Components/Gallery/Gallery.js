@@ -47,19 +47,21 @@ const Gallery = () => {
   }, [images]);
 
   return (
-    <div>
+    <div className="">
       {showDeleteButton && (
-        <div className="flex justify-between mb-1">
-          <p>({selectedImages.length} selected)</p>
+        <div className="flex justify-between mb-2">
+          <p className="text-xs sm:text-sm">
+            ({selectedImages.length} selected)
+          </p>
           <button
-            className=" bg-red-500 text-white px-5 rounded"
+            className=" bg-red-500 text-white px-2 text-xs sm:text-sm sm:px-5 rounded"
             onClick={handleImageDelete}
           >
             Delete Selected
           </button>
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {images.map((image, index) => (
           <Image
             key={image.id}
