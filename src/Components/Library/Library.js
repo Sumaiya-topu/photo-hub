@@ -5,9 +5,9 @@ import { Typography } from "@material-tailwind/react";
 const Library = () => {
   return (
     <div>
-      <Typography variant="h5" color="blue-gray">
+      {/* <Typography variant="h5" color="blue-gray">
         Featured
-      </Typography>
+      </Typography> */}
       <Gallery></Gallery>
     </div>
   );

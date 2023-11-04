@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "../Image/Image";
 import initialImages from "../../assets/images";
 
-function Gallery() {
+const Gallery = () => {
   const [images, setImages] = useState(initialImages);
   const [selectedImages, setSelectedImages] = useState([]);
   const [featureImage, setFeatureImage] = useState(images[0]);
@@ -49,9 +49,15 @@ function Gallery() {
   return (
     <div>
       {showDeleteButton && (
-        <button onClick={handleImageDelete}>
-          Delete Selected ({selectedImages.length} selected)
-        </button>
+        <div className="flex justify-between mb-1">
+          <p>({selectedImages.length} selected)</p>
+          <button
+            className=" bg-red-500 text-white px-5 rounded"
+            onClick={handleImageDelete}
+          >
+            Delete Selected
+          </button>
+        </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map((image, index) => (
@@ -70,6 +76,6 @@ function Gallery() {
       </div>
     </div>
   );
-}
+};
 
 export default Gallery;

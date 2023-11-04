@@ -1,15 +1,13 @@
 import React from "react";
 
-function Image({
+const Image = ({
   data,
   isSelected,
   isFeatureImage,
   onClick,
-  onDelete,
   onReorder,
-  onSetFeatureImage,
   index,
-}) {
+}) => {
   const handleClick = () => {
     onClick(data.id);
   };
@@ -24,29 +22,27 @@ function Image({
     onReorder(Number(dragIndex), index);
   };
 
-  const handleSetFeature = () => {
-    onSetFeatureImage(data);
-  };
-
   return (
     <div
-      className={`p-1 hover:translate-y-2 duration-300 flex items-center ${
+      className={`p-1 duration-300 flex items-center ${
         isFeatureImage
-          ? "bg-blue-200 col-span-2 row-span-2 p-2" // Customize this class for the featured image
+          ? " bg-orange-400 col-span-2 row-span-2 p-2 hover:transform hover:-translate-y-1 duration-200 hover:opacity-80" // for the featured image
           : isSelected
-          ? "bg-green-200" // Customize this class for selected images
-          : "" // Customize this class for regular images
+          ? "border-2 border-blue-200 hover:transform hover:scale-105 hover:opacity-80" //  for selected images
+          : "hover:transform hover:scale-105 hover:opacity-80" //  for regular images
       }`}
       onClick={handleClick}
       onDragStart={handleDragStart}
       onDragOver={(e) => e.preventDefault()}
       onDrop={handleDrop}
     >
-      <img src={data.url} alt={data.name} className="w-full" />
-      {/* <button onClick={onDelete}>Delete</button> */}
-      {/* <button onClick={handleSetFeature}>Set Feature</button> */}
+      <img
+        src={data.url}
+        alt={data.name}
+        className="w-full hover:brightness-5"
+      />
     </div>
   );
-}
+};
 
 export default Image;

@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 export function DefaultSidebar() {
   return (
     <div className="hidden xs:block border-r border-blue-gray-100">
-      <Card className="h-[calc(100vh)]  w-full max-w-[18rem] p-4 shadow-lg shadow-blue-gray-900/20 rounded-none">
+      <Card className="h-full w-full max-w-[18rem] p-4 shadow-lg shadow-blue-gray-900/20 rounded-none">
         <List>
           <Link to="/">
             <ListItem className="">
