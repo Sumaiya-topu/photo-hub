@@ -4,28 +4,30 @@ import Image from "../Image/Image";
 import initialImages from "../../assets/images";
 
 function Gallery() {
-  // An array of image objects
+  const [images, setImages] = useState(initialImages);
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [featureImage, setFeatureImage] = useState(images[0]);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
 
-  const [images, setImages] = useState(initialImages); // State for images
-  const [selectedImages, setSelectedImages] = useState([]); // State for selected images
-  const [featureImage, setFeatureImage] = useState(images[0]); // State for the featured image
-
-  // Event handler to toggle selection of an image
   const handleImageClick = (imageId) => {
+    // Toggle selection of an image
     if (selectedImages.includes(imageId)) {
       setSelectedImages(selectedImages.filter((id) => id !== imageId));
     } else {
       setSelectedImages([...selectedImages, imageId]);
     }
+
+    // Show the delete button when images are selected
+    setShowDeleteButton(selectedImages.length > 0);
   };
 
-  // Event handler to delete selected images
   const handleImageDelete = () => {
     setImages(images.filter((image) => !selectedImages.includes(image.id)));
     setSelectedImages([]);
+    // Hide the delete button after deletion
+    setShowDeleteButton(false);
   };
 
-  // Event handler to implement drag-and-drop functionality for reordering
   const handleImageReorder = (dragIndex, dropIndex) => {
     const reorderedImages = [...images];
     const [draggedImage] = reorderedImages.splice(dragIndex, 1);
@@ -33,9 +35,8 @@ function Gallery() {
     setImages(reorderedImages);
   };
 
-  // Event handler to set a new feature image
-  const handleSetFeatureImage = (imageId) => {
-    setFeatureImage(imageId);
+  const handleSetFeatureImage = (image) => {
+    setFeatureImage(image);
   };
 
   useEffect(() => {
@@ -46,20 +47,27 @@ function Gallery() {
   }, [images]);
 
   return (
-    <div className=" grid grid-cols-5  lg:grid-cols-12">
-      {images.map((image, index) => (
-        <Image
-          key={image.id}
-          data={image}
-          isSelected={selectedImages.includes(image.id)}
-          isFeatureImage={image.id === featureImage.id}
-          onClick={handleImageClick}
-          onDelete={handleImageDelete}
-          onReorder={handleImageReorder}
-          onSetFeatureImage={handleSetFeatureImage}
-          index={index}
-        />
-      ))}
+    <div>
+      {showDeleteButton && (
+        <button onClick={handleImageDelete}>
+          Delete Selected ({selectedImages.length} selected)
+        </button>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {images.map((image, index) => (
+          <Image
+            key={image.id}
+            data={image}
+            isSelected={selectedImages.includes(image.id)}
+            isFeatureImage={image.id === featureImage.id}
+            onClick={handleImageClick}
+            onDelete={handleImageDelete}
+            onReorder={handleImageReorder}
+            onSetFeatureImage={handleSetFeatureImage}
+            index={index}
+          />
+        ))}
+      </div>
     </div>
   );
 }
