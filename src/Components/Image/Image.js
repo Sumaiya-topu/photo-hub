@@ -24,7 +24,7 @@ const Image = ({
 
   return (
     <div
-      className={`p-1 duration-300 flex items-center ${
+      className={` border p-1 duration-300 flex items-center ${
         isFeatureImage
           ? " bg-orange-400 col-span-2 row-span-2 p-2 hover:transform hover:-translate-y-1 duration-200 hover:opacity-80" // for the featured image
           : isSelected
@@ -39,7 +39,7 @@ const Image = ({
       <img
         src={data.url}
         alt={data.name}
-        className="w-full hover:brightness-5"
+        className="w-full hover:brightness-5 "
       />
     </div>
   );
